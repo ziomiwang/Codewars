@@ -842,6 +842,115 @@ public class Kata {
         numbersList.stream().map(e -> Integer.parseInt(e)).collect(Collectors.toList()).stream().min(((o1, o2) -> o1.compareTo(o2)));
         return "";
     }
+
+    static int find(int[] integers){
+        int counter1 = 0;
+        int counter2 = 0;
+        int result = 0;
+        int temp1 = 0;
+        int temp2 = 0;
+        for (int i = 0; i < integers.length; i++){
+            if (integers[i]%2 == 0){
+                counter1++;
+            } else {
+                temp1 = integers[i];
+            }
+            if (integers[i]%2 != 0){
+                counter2++;
+            } else {
+                temp2 = integers[i];
+            }
+            if (counter1 > 1){
+                result = temp1;
+            } else {
+                result = temp2;
+            }
+        }
+        return result;
+    }
+
+    public static String spinWords(String sentence) {
+        List<String> splited = Arrays.asList(sentence.split("\\s* \\s*"));
+        for (int i = 0; i < splited.size(); i++){
+            if (splited.get(i).length() > 5) {
+                String temp = splited.get(i);
+                String s = new StringBuilder(temp).reverse().toString();
+                splited.set(i, s);
+            }
+        }
+        return splited.stream().collect(Collectors.joining(" "));
+    }
+
+//    static String encode2(String word){
+//        Map<String, Long> mapped = Arrays.stream(word.toLowerCase().split("")).map(String::valueOf).collect(groupingBy(Function.identity(), Collectors.counting()));
+//        return String.valueOf((int) mapped.entrySet().stream().filter(e -> e.getValue() > 1).map(Map.Entry::getKey).count());
+//    }
+
+    public static String high(String s) {
+        int highestscore = 0;
+        int score = 0;
+        String solution = "";
+        List<String> split = Arrays.asList(s.split("\\s* \\s*"));
+        for (int i = 0; i < split.size(); i++){
+            for (int j = 0; j < split.get(i).length(); j++){
+                score += Integer.valueOf(split.get(i).charAt(j) - 96);
+                if (score > highestscore){
+                    highestscore = score;
+                    solution = split.get(i);
+                }
+            }
+            score = 0;
+        }
+        return solution;
+    }
+
+    public static boolean isTriangle(int a, int b, int c){
+        if (a <= 0 || b <= 0 || c <= 0)
+            return false;
+        if (a > b + c && b > a + c || c > a + b)
+            return false;
+        else
+            return true;
+    }
+
+    public static String noSpace(final String x) {
+//        return Arrays.asList(x.split("\\s* \\s*")).stream().collect(Collectors.joining());
+        return x.replace(" ", "");
+    }
+
+//    public static String siegfried(final int week, final String str) {
+//        String s = "";
+//        switch (week){
+//            case 1:
+//                s = str.replaceAll("ci", "si");
+//                s = s.replaceAll("ce", "se");
+//                s = s.replaceAll("c(?!h)", "k");
+//            case 2:
+//                s = s.replaceAll("ph", "f");
+//            case 3:
+//                s = s.replaceAll("\\b\\w{4,}\\b", "");
+//        }
+//        return s;
+//    }
+
+    public SnakesLadders() {
+
+    }
+    public String play(int die1, int die2) {
+        return "";
+    }
+
+    class Player {
+        int playerScore;
+
+        public int getPlayerScore() {
+            return playerScore;
+        }
+    }
+
+    class PlayerHistory{
+
+    }
 }
 
 
