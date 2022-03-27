@@ -6,7 +6,6 @@ import java.util.function.Function;
 import java.util.function.IntPredicate;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
-import java.util.stream.Stream;
 
 import static java.util.stream.Collectors.groupingBy;
 
@@ -728,17 +727,17 @@ public class Kata {
         return -1;
     }
 
-    public static int countBits(int n){
+    public static int countBits(int n) {
         String intToBinary = Integer.toBinaryString(n);
         long count = intToBinary.chars().filter(ch -> ch == '1').count();
         return (int) count;
     }
 
     public static boolean isPrime(int number) {
-        if(number < 2)
+        if (number < 2)
             return false;
-        for (int i=2; i<=Math.sqrt(number); i++){
-            if(number % i == 0)
+        for (int i = 2; i <= Math.sqrt(number); i++) {
+            if (number % i == 0)
                 return false;
         }
         return true;
@@ -750,17 +749,17 @@ public class Kata {
     }
 
     public static int ZGetSum(int a, int b) {
-        System.out.println("Math.min: " + Math.min(a,b));
-        System.out.println("Math.max: " + Math.max(a,b));
-        return IntStream.range(Math.min(a,b), Math.max(a,b) + 1).sum();
+        System.out.println("Math.min: " + Math.min(a, b));
+        System.out.println("Math.max: " + Math.max(a, b));
+        return IntStream.range(Math.min(a, b), Math.max(a, b) + 1).sum();
     }
 
     public static String[] TowerBuilder(int nFloors) {
         String tower[] = new String[nFloors], e;
         String star = "*";
         int a = 1;
-        for(int i = 0; i < nFloors; i++){
-            tower[i] = (e = " ".repeat(nFloors - i - 1)) + "*".repeat(i+i+1) + e;
+        for (int i = 0; i < nFloors; i++) {
+            tower[i] = (e = " ".repeat(nFloors - i - 1)) + "*".repeat(i + i + 1) + e;
             System.out.println(tower[i]);
         }
         return tower;
@@ -768,10 +767,10 @@ public class Kata {
 
     public static String pigIt(String str) {
         List<String> testCase = Arrays.asList(str.split("\\s* \\s*"));
-        for (int i = 0; i< testCase.size();i++){
+        for (int i = 0; i < testCase.size(); i++) {
             String s1 = testCase.get(i);
             char s2 = s1.charAt(0);
-            if (s2 == '!' || s2 == '?'){
+            if (s2 == '!' || s2 == '?') {
                 continue;
             }
             String s3 = s1.substring(1) + s2 + "ay";
@@ -779,7 +778,7 @@ public class Kata {
         }
         String result = testCase.stream().map(Object::toString).collect(Collectors.joining(" "));
         System.out.println(result);
-    return result;
+        return result;
     }
 
 //    public static String createPhoneNumber(int[] numbers) {
@@ -802,7 +801,7 @@ public class Kata {
 //    }
 
     public static String createPhoneNumber(int[] n) {
-        return String.format("(%d%d%d) %d%d%d-%d%d%d%d",n[0],n[1],n[2],n[3],n[4],n[5],n[6],n[7],n[8],n[9]);
+        return String.format("(%d%d%d) %d%d%d-%d%d%d%d", n[0], n[1], n[2], n[3], n[4], n[5], n[6], n[7], n[8], n[9]);
     }
 
     public static int duplicateCount(String text) {
@@ -814,26 +813,26 @@ public class Kata {
         int sec = 0, min = 0, hour = 0;
         String time = "";
         while (seconds > 0) {
-            sec = seconds%60;
+            sec = seconds % 60;
             seconds /= 60;
-            min = seconds%60;
-            seconds /=60;
+            min = seconds % 60;
+            seconds /= 60;
             hour = seconds;
             seconds = 0;
         }
         String hourS = String.valueOf(hour);
-        if(hourS.length() == 1){
+        if (hourS.length() == 1) {
             hourS = "0" + hourS;
         }
         String minS = String.valueOf(min);
-        if(minS.length() == 1){
+        if (minS.length() == 1) {
             minS = "0" + minS;
         }
         String secS = String.valueOf(sec);
-        if(secS.length() == 1){
+        if (secS.length() == 1) {
             secS = "0" + secS;
         }
-        time += hourS + ":" +  minS + ":" +  secS;
+        time += hourS + ":" + minS + ":" + secS;
         return time;
     }
 
@@ -843,24 +842,24 @@ public class Kata {
         return "";
     }
 
-    static int find(int[] integers){
+    static int find(int[] integers) {
         int counter1 = 0;
         int counter2 = 0;
         int result = 0;
         int temp1 = 0;
         int temp2 = 0;
-        for (int i = 0; i < integers.length; i++){
-            if (integers[i]%2 == 0){
+        for (int i = 0; i < integers.length; i++) {
+            if (integers[i] % 2 == 0) {
                 counter1++;
             } else {
                 temp1 = integers[i];
             }
-            if (integers[i]%2 != 0){
+            if (integers[i] % 2 != 0) {
                 counter2++;
             } else {
                 temp2 = integers[i];
             }
-            if (counter1 > 1){
+            if (counter1 > 1) {
                 result = temp1;
             } else {
                 result = temp2;
@@ -871,7 +870,7 @@ public class Kata {
 
     public static String spinWords(String sentence) {
         List<String> splited = Arrays.asList(sentence.split("\\s* \\s*"));
-        for (int i = 0; i < splited.size(); i++){
+        for (int i = 0; i < splited.size(); i++) {
             if (splited.get(i).length() > 5) {
                 String temp = splited.get(i);
                 String s = new StringBuilder(temp).reverse().toString();
@@ -891,10 +890,10 @@ public class Kata {
         int score = 0;
         String solution = "";
         List<String> split = Arrays.asList(s.split("\\s* \\s*"));
-        for (int i = 0; i < split.size(); i++){
-            for (int j = 0; j < split.get(i).length(); j++){
+        for (int i = 0; i < split.size(); i++) {
+            for (int j = 0; j < split.get(i).length(); j++) {
                 score += Integer.valueOf(split.get(i).charAt(j) - 96);
-                if (score > highestscore){
+                if (score > highestscore) {
                     highestscore = score;
                     solution = split.get(i);
                 }
@@ -904,7 +903,7 @@ public class Kata {
         return solution;
     }
 
-    public static boolean isTriangle(int a, int b, int c){
+    public static boolean isTriangle(int a, int b, int c) {
         if (a <= 0 || b <= 0 || c <= 0)
             return false;
         if (a > b + c && b > a + c || c > a + b)
@@ -918,38 +917,130 @@ public class Kata {
         return x.replace(" ", "");
     }
 
-//    public static String siegfried(final int week, final String str) {
-//        String s = "";
-//        switch (week){
-//            case 1:
-//                s = str.replaceAll("ci", "si");
-//                s = s.replaceAll("ce", "se");
-//                s = s.replaceAll("c(?!h)", "k");
-//            case 2:
-//                s = s.replaceAll("ph", "f");
-//            case 3:
-//                s = s.replaceAll("\\b\\w{4,}\\b", "");
-//        }
-//        return s;
-//    }
-
-    public SnakesLadders() {
-
-    }
-    public String play(int die1, int die2) {
-        return "";
-    }
-
-    class Player {
-        int playerScore;
-
-        public int getPlayerScore() {
-            return playerScore;
+    public static String siegfried(final int week, final String str) {
+        String[] s = str.split(" ");
+        for (int i = 0; i < s.length; i++) {
+            if (week >= 1) {
+                s[i] = s[i].replaceAll("(?i)ci", "si");
+                s[i] = s[i].replaceAll("Ci", "Si");
+                s[i] = s[i].replaceAll("ce", "se");
+                s[i] = s[i].replaceAll("Ce", "Se");
+                s[i] = s[i].replaceAll("c(?!h)", "k");
+                s[i] = s[i].replaceAll("C(?!h)", "K");
+            }
+            if (week >= 2) {
+                s[i] = s[i].replaceAll("ph", "f");
+                s[i] = s[i].replaceAll("Ph", "F");
+            }
+            if (week >= 3) {
+                if (s[i].length() > 3) {
+                    s[i] = s[i].replaceAll("e$", "");
+                    s[i] = s[i].replaceAll("e-", "-");
+                    s[i] = s[i].replaceAll("e!", "!");
+                    //usuwa e, jesli po zdaniu jest znak specjalny
+                }
+                s[i] = s[i].replaceAll("(?i)(\\p{L})\\1+", "$1");
+            }
+            if (week >= 4) {
+                s[i] = s[i].replaceAll("th", "z");
+                s[i] = s[i].replaceAll("Th", "Z");
+                s[i] = s[i].replaceAll("wr", "r");
+                s[i] = s[i].replaceAll("Wr", "R");
+                s[i] = s[i].replaceAll("wh", "v");
+                s[i] = s[i].replaceAll("Wh", "V");
+                s[i] = s[i].replaceAll("w", "v");
+                s[i] = s[i].replaceAll("W", "V");
+            }
+            if (week >= 5) {
+                s[i] = s[i].replaceAll("ou", "u");
+                s[i] = s[i].replaceAll("an", "un");
+                s[i] = s[i].replaceAll("An", "Un");
+                s[i] = s[i].replaceAll("ing$", "ink");
+                s[i] = s[i].replaceAll("^sm", "schm");
+                s[i] = s[i].replaceAll("^Sm", "Schm");
+            }
         }
+        return String.join(" ", s);
     }
 
-    class PlayerHistory{
 
+    public static int SnakesLadders(int test) {
+        Map<Integer, Integer> snakesAndLadders = new HashMap<Integer, Integer>();
+        int result = 0;
+        snakesAndLadders.put(16, 6);
+        snakesAndLadders.put(46, 25);
+        snakesAndLadders.put(49, 11);
+        snakesAndLadders.put(62, 19);
+        snakesAndLadders.put(64, 60);
+        snakesAndLadders.put(74, 53);
+        snakesAndLadders.put(89, 68);
+        snakesAndLadders.put(92, 88);
+        snakesAndLadders.put(95, 75);
+        snakesAndLadders.put(99, 80);
+        snakesAndLadders.put(2, 38);
+        snakesAndLadders.put(7, 14);
+        snakesAndLadders.put(8, 31);
+        snakesAndLadders.put(15, 26);
+        snakesAndLadders.put(21, 42);
+        snakesAndLadders.put(28,84);
+        snakesAndLadders.put(36,44);
+        snakesAndLadders.put(51, 67);
+        snakesAndLadders.put(71,91);
+        snakesAndLadders.put(78, 98);
+        snakesAndLadders.put(87, 94);
+
+        if (snakesAndLadders.containsKey(test)) {
+            result = snakesAndLadders.get(test);
+        } else {
+            result = test;
+        }
+        return result;
+    }
+
+    public static int p1Score = 0;
+    public static int p2Score = 0;
+    public static boolean currentPlayer = true;
+
+    public static String play(int die1, int die2) {
+        final int endpoint = 100;
+        int dices = die1 + die2;
+            if (currentPlayer) {
+                p1Score += dices;
+                p1Score = overpoint(p1Score);
+                p1Score = SnakesLadders(p1Score);
+            } else {
+                p2Score += dices;
+                p2Score = overpoint(p2Score);
+                p2Score = SnakesLadders(p2Score);
+            }
+            final String response = currentPlayer ? "Player 1 is on square " + p1Score : "Player 2 is on square " + p2Score;
+            if (die1 != die2) {
+                currentPlayer = !currentPlayer;
+            }
+            if (endGame){
+                endGame = false;
+                p1Score = 0;
+                p2Score = 0;
+                currentPlayer = true;
+                return "Game over!";
+            }
+            if (p1Score == endpoint){
+                endGame = true;
+                return "Player 1 Wins!";
+            } else if (p2Score == endpoint){
+                endGame = true;
+                return "Player 2 Wins!";
+            }
+        return response;
+    }
+    public static boolean endGame = false;
+
+    public static int overpoint(int score){
+        if (score > 100){
+           return 100 + (100 - (score));
+        } else {
+            return score;
+        }
     }
 }
 
